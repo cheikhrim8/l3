@@ -50,18 +50,16 @@ class DomainesController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(Request $request): \Illuminate\Http\JsonResponse
     {
-        /*Domaines::updateOrCreate(['id' => $request->domaine_id],
-            ['nom' => $request->nom, 'idParent' => $request->parent]);
+        Domaines::create([
+            'nom' => $request->nom,
+            'idParent' => $request->idParent
+        ]);
 
-        return response()->json(['success' => 'domaine saved successfully.']);*/
+        return response()->json([
+            'success' => 'domaine saved successfully.'
+        ]);
     }
 
     /**
@@ -86,11 +84,9 @@ class DomainesController extends Controller
 
         $v = Domaines::find($id);
 
-
         $this->validate($request, [
             'nom' => ['required']
         ]);
-
 
         $v->nom = $request->nom;
         $v->idParent = $request->idParent;
