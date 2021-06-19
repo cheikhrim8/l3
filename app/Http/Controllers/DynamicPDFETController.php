@@ -48,14 +48,11 @@ class DynamicPDFETController extends Controller
      {for ($i = 1; $i <= $etiquete->nbr_etiq/4; $i++) {
      	
       $output .= ' 
-     
     <tr>
        <td style="border: 1px solid; padding:12px;">'.$etiquete->emp.'</td>
        <td style="border: 1px solid; padding:12px;">'.$etiquete->emp.'</td>
        <td style="border: 1px solid; padding:12px;">'.$etiquete->emp.'</td>
        <td style="border: 1px solid; padding:12px;">'.$etiquete->emp.'</td>
-        
-      
       </tr>
       '; }
     
@@ -63,11 +60,9 @@ class DynamicPDFETController extends Controller
       if ($l==1) {
      	
       $output .= ' 
-     
+
     <tr>
        <td style="border: 1px solid; padding:12px;">'.$etiquete->emp.'</td>
-
-      
       </tr>
       '; }
 
