@@ -49,10 +49,11 @@ class DynamicPDFETController extends Controller
      	
       $output .= ' 
     <tr>
-       <td style="border: 1px solid; padding:12px;">'.$etiquete->emp.'</td>
-       <td style="border: 1px solid; padding:12px;">'.$etiquete->emp.'</td>
-       <td style="border: 1px solid; padding:12px;">'.$etiquete->emp.'</td>
-       <td style="border: 1px solid; padding:12px;">'.$etiquete->emp.'</td>
+
+    <td height="90" align="center" style="border: 1px solid; padding:12px;">'.$etiquete->emp.'</td>
+    <td height="90" align="center" style="border: 1px solid; padding:12px;">'.$etiquete->emp.'</td>
+    <td height="90" align="center" style="border: 1px solid; padding:12px;">'.$etiquete->emp.'</td>
+    <td height="90" align="center" style="border: 1px solid; padding:12px;">'.$etiquete->emp.'</td>
       </tr>
       '; }
     
@@ -62,8 +63,8 @@ class DynamicPDFETController extends Controller
       $output .= ' 
 
     <tr>
-       <td style="border: 1px solid; padding:12px;">'.$etiquete->emp.'</td>
-      </tr>
+    <td height="90" align="center" style="border: 1px solid; padding:12px;">'.$etiquete->emp.'</td>
+    </tr>
       '; }
 
       $l=$etiquete->nbr_etiq%4;
@@ -72,8 +73,8 @@ class DynamicPDFETController extends Controller
       $output .= ' 
      
     <tr>
-       <td style="border: 1px solid; padding:12px;">'.$etiquete->emp.'</td>
-       <td style="border: 1px solid; padding:12px;">'.$etiquete->emp.'</td>
+    <td height="90" align="center" style="border: 1px solid; padding:12px;">'.$etiquete->emp.'</td>
+    <td height="90" align="center" style="border: 1px solid; padding:12px;">'.$etiquete->emp.'</td>
 
       
       </tr>
@@ -85,9 +86,9 @@ class DynamicPDFETController extends Controller
       $output .= ' 
      
     <tr>
-       <td style="border: 1px solid; padding:12px;">'.$etiquete->emp.'</td>
-       <td style="border: 1px solid; padding:12px;">'.$etiquete->emp.'</td>
-       <td style="border: 1px solid; padding:12px;">'.$etiquete->emp.'</td>
+    <td height="90" align="center" style="border: 1px solid; padding:12px;">'.$etiquete->emp.'</td>
+    <td height="90" align="center" style="border: 1px solid; padding:12px;">'.$etiquete->emp.'</td>
+    <td height="90" align="center" style="border: 1px solid; padding:12px;">'.$etiquete->emp.'</td>
 
       
       </tr>

@@ -39,9 +39,10 @@ class OuvragesController extends Controller
 ->join('ouvrages','ouvrages.nom_dom','=','afectations.nom_dom')
 ->where([['statu','=',1] ,['afectations.nom_dom','=','$nm']]) 
 ->get()  ;
-     
-    $k=(string) ($l[0]->num_etager.'-'.$l[0]->num_rayon.'-'. $l[0]->num_bloc);
-
+    
+ //dd($l);
+    $k=(string) ($l["num_etager"].'-'.$l[0]->num_rayon.'-'. $l[0]->num_bloc);
+ // dd($K);
 
         Ouvrages::create([
         	      'nom_dom'=> $request->nom_dom,

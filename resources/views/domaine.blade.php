@@ -11,6 +11,7 @@
     <div class="container">
 <div >
     <section class="mt-5">
+<<<<<<< HEAD
         <div>
         <button id="add-btn" onclick="myFunction()" type="button"   class=" btn btn-lg btn-primary">
                   <span class="glyphicon glyphicon-plus" > </span> <b>ajouter</b></button>
@@ -108,13 +109,97 @@
                     </td>
                 </tr>
             @empty
+=======
+
+        <div class="container mb-5">
+            <div class="edit-form" style="display: none">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>edit form</h4>
+                    </div>
+                    <div class="card-body">
+                        <form id="edit-form">
+                            {{--                    <input type="text" id="u_id">--}}
+                            <div class="form-group">
+                                <label for="u_nom">Nom</label>
+                                <input type="text" name="nom" id="u_nom" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="u_idParent">Nom</label>
+                                <input type="text" name="idParent" id="u_idParent" class="form-control">
+                            </div>
+                            <button type="submit" id="submit-btn" class="btn btn-primary">Save changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       <div class="container mb-5">
+           <div class="add-form">
+               <div class="card">
+                   <div class="card-header">
+                       <h4>edit form</h4>
+                   </div>
+                   <div class="card-body">
+                       <form id="add-form">
+                           <div class="form-group">
+                               <label for="nom">Nom</label>
+                               <input type="text" name="nom" id="nom" class="form-control">
+                           </div>
+                           <div class="form-group">
+                               <label for="idParent">IdParent</label>
+                               <input type="text" name="idParent" id="idParent" class="form-control">
+                           </div>
+                           <button type="submit" class="btn btn-primary">Save changes</button>
+                       </form>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+        <div class="container">
+
+            <button id="add" type="button" class="btn btn-primary my-4">Add</button>
+
+            <table id="myTable" class="table table-bordered data-table" width="100%">
+                <thead>
+>>>>>>> ae10b52f1147cbe0446b800889619e4282e42a88
                 <tr>
-                    <td colspan="4">No record</td>
+                    <th>id</th>
+                    <th>nom</th>
+                    <th>domaine parent</th>
+                    <th>Action</th>
                 </tr>
-            @endforelse
-            </tbody>
-        </table>
-    </div>
+                </thead>
+                <tbody>
+                @forelse($domaines as $domaine)
+                    <tr>
+                        <td>{{$domaine->id}}</td>
+                        <td>{{$domaine->nom}}</td>
+                        <td>{{$domaine->idParent}}</td>
+                        <td>
+                            <button class="edit-btn btn btn-sm btn-primary">edit</button>
+                            <button
+                                onclick="event.preventDefault(); confirm(document.getElementById('delete-form').submit());"
+                                class="btn btn-sm btn-danger">delete
+                            </button>
+                            <form action="{{route('domaines.destroy' , $domaine->id)}}"
+                                  id="delete-form"
+                                  method="post" style="display: none">
+                                @csrf
+                                @method('DELETE')
+                            </form>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="4">No record</td>
+                    </tr>
+                @endforelse
+                </tbody>
+            </table>
+        </div>
 
 
     </section>
@@ -159,7 +244,12 @@ $.ajaxSetup({
                 $('#u_id').val(id)
                 $('#u_idParent').val(idParent)
             })
+<<<<<<< HEAD
          
+=======
+
+
+>>>>>>> ae10b52f1147cbe0446b800889619e4282e42a88
             $('#edit-form').on('submit', function (e) {
                 e.preventDefault()
                 let id = $('#u_id').val()
@@ -179,14 +269,27 @@ $.ajaxSetup({
                     }
                 })
             })
+<<<<<<< HEAD
             // Add form logic
             $('.add-form').on('submit', function (e) {
                 e.preventDefault()
+=======
+
+            // Add form logic
+
+            $('#add-form').on('submit', function (e) {
+                e.preventDefault()
+
+>>>>>>> ae10b52f1147cbe0446b800889619e4282e42a88
                 let _url = '{{route('domaines.store')}}'
                 $.ajax({
                     type: 'post',
                     url: _url,
+<<<<<<< HEAD
                     data: $('.add-form').serialize(),
+=======
+                    data: $('#add-form').serialize(),
+>>>>>>> ae10b52f1147cbe0446b800889619e4282e42a88
                     success: function (res) {
                         console.log(res)
                         window.location.reload()
