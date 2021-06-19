@@ -1,0 +1,78 @@
+body{
+  width: 100%;
+  background: ;
+ }
+  #btn-icon{
+    font-size: 48px;
+    text-align: center;
+    color: #057575; 
+   }
+  .card-body{
+    text-align: center;
+    width:auto;
+    height:auto;
+  }
+  .carousel-inner{
+   background-color:;
+   width:100%;
+   height:200px;
+
+  }
+  #btn-h{
+    background-color: #057575;
+  }
+  #carouselExampleIndicators{
+  
+   margin:8px;
+   margin-left:60px;
+   width: 90%;
+   height: 200px;
+   
+  }
+  .navbar {
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color: #057575;
+  color: white;
+  
+  }
+  #txt{
+    text-align: center;
+    font-size: 40px;
+  }
+  .row{
+    width:96%;
+    height:px;
+  }
+
+  #all{
+   padding:20px;
+   margin-left:60px;
+   position:relative;
+ }
+ .footer {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color:#057575;
+  color: white;
+  text-align: center;
+  margin-top:10px
+}
+img{
+    width:89%;
+    height:300px;
+    padding:25px;
+    margin-left:60px
+}
+
+.iconify{
+background: url('https://api.iconify.design/bi-bookshelf.svg') no-repeat center center / contain;
+content: url('https://api.iconify.design/bi-bookshelf.svg?height=16');
+vertical-align: -0.125em;
+ font-size: 48px;
+    text-align: center;
+    color: #057575; }
+

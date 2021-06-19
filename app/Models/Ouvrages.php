@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ouvrages extends Model
 {
 protected $fillable = [
-  	'type_ouvrage','code','date_edition','editeur','nbrpage','titre','annee_universitaire'
+  	'nom_dom','type_ouvrage','code','date_edition','editeur','nbrpage','titre','annee_universitaire','emp'
   ];
 }
 

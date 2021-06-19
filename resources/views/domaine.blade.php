@@ -10,14 +10,14 @@
 </style>
     <div class="container">
 <div >
-
     <section class="mt-5">
         <div>
         <button id="add-btn" onclick="myFunction()" type="button"   class=" btn btn-lg btn-primary">
                   <span class="glyphicon glyphicon-plus" > </span> <b>ajouter</b></button>
         <button id="none-btn" onclick="myFunction()" type="button"   class=" btn btn-lg btn-primary">
                   <span class="glyphicon glyphicon-minus" > </span> <b>cacher</b></button>
-
+    <a href="{{ url('dynamic_pdf/pdf') }}"  class=" btn btn-lg btn-primary">
+                  <span class="glyphicon glyphicon-print" > </span> print </a>
 </div>
         <div>
             &nbsp
@@ -95,12 +95,12 @@
                         </button>
                         &nbsp
                         <button
-                            onclick="event.preventDefault(); confirm(document.getElementById('delete-form').submit());"
+                            onclick="event.preventDefault(); document.getElementById('delete-form-{{$domaine->id}}').submit();"
                             class="btn btn-lg btn-danger">
                             <span class="glyphicon glyphicon-trash"></span>&nbsp <b>supprimer</b>
                         </button>
                         <form action="{{route('domaines.destroy' , $domaine->id)}}"
-                              id="delete-form"
+                              id="delete-form-{{$domaine->id}}"
                               method="post" style="display: none">
                             @csrf
                             @method('DELETE')

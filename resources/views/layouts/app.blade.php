@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{mix('css/app.css')}}">
     <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css">
 </head>
 <body style="height: 100vh">
@@ -30,10 +31,13 @@
                 </li>
               
                 <li class="nav-item active">
-                    <a class="nav-link " href="./">Exemplaire</a>
+                    <a class="nav-link " href="./exemplaires">Exemplaire</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link " href="./afectations">Emplacement</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link " href="./etiquetes">Etiquete</a>
                 </li>
                
             </ul>

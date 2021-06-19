@@ -17,6 +17,8 @@
                   <span class="glyphicon glyphicon-plus-sign" > </span> <b>ajouter</b></button>
         <button id="none-btn" onclick="myFunction()" type="button"   class=" btn btn-lg btn-primary">
                   <span class="glyphicon glyphicon-minus-sign" > </span> <b>cacher</b></button>
+                  <a href="{{ url('dynamic_pdfo/pdfO') }}"  class=" btn btn-lg btn-primary">
+                  <span class="glyphicon glyphicon-print" > </span> print </a>
  <div>
             &nbsp
         </div>
@@ -82,6 +84,7 @@
                         <label for="u_annee_universitaire">annee_universitaire</label>
                         <input type="text" name="annee_universitaire" id="u_annee_universitaire" class="form-control">
                     </div>
+                    
                     <button type="submit" id="submit-btn" class="btn btn-lg btn-primary">enregistrer</button>
                 </form>
             </div>
@@ -152,6 +155,7 @@
                 <th>nombre page</th>
                 <th>Titre</th>
                 <th>annee universitaire</th>
+                <th>emp</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -167,11 +171,10 @@
                     <td>{{$ouvrage->nbrpage}}</td>
                     <td>{{$ouvrage->titre}}</td>
                     <td>{{$ouvrage->annee_universitaire}}</td>
+                    <td>{{$ouvrage->emp}}</td>
 
                     <td>
-                        <button class="emp-btn btn btn-lg btn-primary" >
-                                <span class="glyphicon glyphicon-record"></span>   
-                       </button>
+                    
                          <button class="edit-btn btn btn-lg btn-primary">
                             <span class="glyphicon glyphicon-pencil"></span>                         </button>
                         <button
@@ -272,7 +275,7 @@
                         window.location.reload()
                     }
                 })
-            })
+              })
         $('.add-form').on('submit', function (e) {
                 e.preventDefault()
                 let _url = '{{route('ouvrages.store')}}'
@@ -282,11 +285,11 @@
                     data: $('.add-form').serialize(),
                     success: function (res) {
                         console.log(res)
-                        window.location.reload()
+                        //window.location.reload()
                     },
                     error: function (err) {
-                        console.log(err)
-                        window.location.reload()
+                        console.error(err)
+                       // window.location.reload()
                     }
                 })
             })
@@ -309,10 +312,10 @@
 
                 let nom_dom = $('#e_nom_dom').val()
 
-                let _url = `ouvrages/emp/${nom_dom}`
+                let _url = `ouvrages/${nom_dom}`
                 $.ajax({
                     url: _url,
-                   type: 'put',
+                   type: 'post',
                     // contentType: 'json',
                     data: $(".emp-form").serialize(),
                     success: function (response) {

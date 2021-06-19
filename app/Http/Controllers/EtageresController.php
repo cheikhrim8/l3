@@ -108,10 +108,10 @@ class EtageresController extends Controller
         ]);
     }
 
-    public function destroy(Etageres $etagere)
+    public function destroy($id)
     {
 
-        $etagere->delete();
+        Etageres::find($id)->delete();
 
         return redirect()->back()->with('success', 'etagere was deleted');
     }

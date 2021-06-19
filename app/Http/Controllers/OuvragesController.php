@@ -10,14 +10,11 @@ class OuvragesController extends Controller
 {
 
     public function index()
-    {
+    {  
+
+    $ouvrages = Ouvrages::all();
   
-
-        return view('ouvrage', [
-            'ouvrages' => Ouvrages::all(),
-
-        ]);
-
+        return view('ouvrage', ['ouvrages' => $ouvrages]);
 
     }
 
@@ -34,24 +31,16 @@ class OuvragesController extends Controller
     public function store(Request $request): \Illuminate\Http\JsonResponse
     {   
     	$ouvrages= Ouvrages::all();
-          foreach ($ouvrages as $ouvrage){
 
-      if($ouvrage->type_ouvrage == $request->type_ouvrage and 
-      	$ouvrage->code==  $request->code and
-        $ouvrage->date_edition ==  $request->date_edition and
-        $ouvrage->editeur == $request->editeur and
-         $ouvrage->nbrpage ==  $request->nbrpage and
-         $ouvrage->titre == $request->titre and
-         $ouvrage->annee_universitaire == $request->annee_universitaire){
+   $nm=$request->nom_dom;
 
-       ?>
-       <script>
-       	alert("cet ouvrage existe deja veuillez le saisir comme exemplaire ");
-       </script>
-       <?php
-   }
-
-      else{
+            $l= DB::table("afectations")
+->select(DB::raw(" distinct afectations.num_etager,afectations.num_rayon ,afectations.num_bloc "))
+->join('ouvrages','ouvrages.nom_dom','=','afectations.nom_dom')
+->where([['statu','=',1] ,['afectations.nom_dom','=','$nm']]) 
+->get()  ;
+     
+    $k=(string) ($l[0]->num_etager.'-'.$l[0]->num_rayon.'-'. $l[0]->num_bloc);
 
 
         Ouvrages::create([
@@ -63,14 +52,13 @@ class OuvragesController extends Controller
                 'nbrpage' => $request->nbrpage,
                 'titre'=> $request->titre,
                  'annee_universitaire' => $request->annee_universitaire,
-
-        ]); 
+                 'emp'  => $k         
+                 ]); 
 
     return response()->json([
-            'success' => 'ouvrage saved successfully.'
+            'success' => ' ouvrage saved successfully.'
         ]);     
-  }}
-}
+  }
 
     /**
      * Display the specified resource.
@@ -78,15 +66,6 @@ class OuvragesController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
- 
-    public function emp($nom_dom)
-    {
-    	$afectations=Afectations::all();
-
-        $aff= DB::select('select  nom_dom,num_etg,num_rayon,num_bloc from afectations where nom_dom=',$nom_dom ,'statu=', '1' );
-        dd($aff);
-       return $aff;
-    }
 
     public function show($id)
     {
@@ -103,18 +82,14 @@ class OuvragesController extends Controller
     {
 
         $v = Ouvrages::find($id);
-
-
                    $v->nom_dom = $request->nom_dom;
-                 $v->type_ouvrage = $request->type_ouvrage;
-                  $v->code = $request->code;
-                 $v->date_edition = $request->date_edition;
-                 $v->editeur = $request->editeur;
+            $v->type_ouvrage = $request->type_ouvrage;
+            $v->code = $request->code;
+            $v->date_edition = $request->date_edition;
+            $v->editeur = $request->editeur;
                 $v->nbrpage = $request->nbrpage;
                 $v->titre = $request->titre;
                  $v->annee_universitaire = $request->annee_universitaire;
-
-      
 
         $v->save();
         return response()->json([
